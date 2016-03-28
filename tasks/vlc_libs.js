@@ -10,9 +10,9 @@ var downloader = require('./lib/downloader');
 
 function getPlatformInfo() {
     if (/linux/.test(process.platform)) {
-        return process.arch == 32 ? 'linux:ia32' : 'linux:x64';
+        return 'linux:x64';
     } else if (/darwin/.test(process.platform)) {
-        return 'osx:ia32';
+        return 'osx:x64';
     } else {
         return 'win:ia32';
     }
@@ -20,7 +20,7 @@ function getPlatformInfo() {
 
 function getVLC(platform, arch, dir, callback) {
 
-    utils.getJson('https://api.github.com/repos/Magics-Group/vlc-prebuilt/releases/latest')
+    utils.getJson('https://api.github.com/repos/jaruba/vlc-prebuilt/releases/latest')
         .then(function(json) {
 
             if (json.message === 'Not Found') {
